@@ -49,7 +49,7 @@ const ProjectSchema = new Schema<IProjectDocument>(
     },
     color: { type: String, default: "#6e6456" },
     tags: [{ type: String, trim: true }],
-    users: { type: [ProjectUserSchema], default: [] },
+    users: { type: [ProjectUserSchema], default: [] } as any,
     ownerId: { type: String, required: true },
   },
   { timestamps: true }

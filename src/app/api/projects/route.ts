@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const data = createProjectSchema.parse(body);
-    const project = await projectService.createProject(user.id, data);
+    const project = await projectService.createProject(user.id, data as any);
     return NextResponse.json({ success: true, data: project }, { status: 201 });
   } catch (err: any) {
     if (err?.name === "ZodError") {

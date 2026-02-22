@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { projectService } from "@/services/project.service";
 import { ProjectsClient } from "@/components/projects/ProjectsClient";
+import { authOptions } from "@/lib/auth";
 
 export default async function ProjectsPage() {
   const session = await getServerSession(authOptions);

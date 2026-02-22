@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { projectService } from "@/services/project.service";
 import Link from "next/link";
 import { FolderOpen, Users, Key, AlertTriangle, ArrowRight } from "lucide-react";
+import { authOptions } from "@/lib/auth";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
