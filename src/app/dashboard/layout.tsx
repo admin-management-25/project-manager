@@ -1,0 +1,18 @@
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+import { SidebarNav } from "@/components/layout/SidebarNav";
+
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const session = await getServerSession(authOptions);
+  if (!session) redirect("/auth/login");
+
+  return (
+    <div className="flex min-h-screen" style={{ position: "relative", zIndex: 1 }}>
+      <SidebarNav user={session.user as any} />
+      <main className="flex-1 overflow-auto">
+        {children}
+      </main>
+    </div>
+  );
+}
